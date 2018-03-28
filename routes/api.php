@@ -1,18 +1,11 @@
 <?php
 
-use Illuminate\Http\Request;
+$router->group(["prefix" => "tasks"], function ($router) {
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+	$router->get("", "Tasks@index");
+	$router->post("", "Tasks@store");
+	$router->delete("{task}", "Tasks@destroy");
+	$router->put("{task}", "Tasks@update");
+	$router->patch("{task}/completed", "Tasks@completed");
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
 });
