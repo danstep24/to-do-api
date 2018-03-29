@@ -39,8 +39,9 @@ class Tasks extends Controller
      */
     public function completed(Task $task)
     {
-        $task->completed = true;
+        $task->completed = !$task->completed;
         $task->save();
+        return $task;
     }
 
     /**
